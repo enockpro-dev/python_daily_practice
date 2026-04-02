@@ -10,7 +10,8 @@ elif operation == "-":
     print("result:", num1 - num2)
 
 elif operation == "*":
-    print("result:", num1 * num2)
+    print("result:", num1 * num2)0
+
 elif operation == "/":
     print("result:", num1 / num2)
 
