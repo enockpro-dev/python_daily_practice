@@ -37,8 +37,8 @@ def show_money_count(amount):
         print("0.00\n")
         return
 
-    duration = 40.0
-    steps = 100
+    duration = 10.0
+    steps = 1
     delay = duration / steps
 
     for step in range(steps):
@@ -52,8 +52,8 @@ def show_money_count(amount):
 def main():
     prices = {
         "1": ("Petrol", 3500),
-        "2": ("Diesel", 3400),
-        "3": ("Gas", 5000),
+        "2": ("Diesel", 3500),
+       
     }
 
     while True:
