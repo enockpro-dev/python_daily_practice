@@ -1,8 +1,8 @@
 def print_menu():
-    print("===== Simple Shell Fuel Station =====")
-    print("1. Petrol (Gasoline) - $1.20 per liter")
-    print("2. Diesel - $1.05 per liter")
-    print("3. Gas - $0.95 per liter")
+    print("=====  FUEL STATION  =====")
+    print("1. Petrol (Gasoline) - 3500 per liter")
+    print("2. Diesel - 3400 per liter")
+    print("3. Gas - 5000 per liter")
     print("4. Exit")
     print("====================================")
 
