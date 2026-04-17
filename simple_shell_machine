@@ -1,0 +1,67 @@
+def print_menu():
+    print("===== Simple Shell Fuel Station =====")
+    print("1. Petrol (Gasoline) - $1.20 per liter")
+    print("2. Diesel - $1.05 per liter")
+    print("3. Gas - $0.95 per liter")
+    print("4. Exit")
+    print("====================================")
+
+
+def get_fuel_choice():
+    choice = input("Choose fuel type (1-4): ").strip()
+    return choice
+
+
+def get_quantity():
+    while True:
+        value = input("Enter liters to buy: ").strip()
+        try:
+            liters = float(value)
+            if liters <= 0:
+                print("Please enter a positive number.")
+                continue
+            return liters
+        except ValueError:
+            print("Invalid input. Please enter a number.")
+
+
+def calculate_cost(liters, price_per_liter):
+    return liters * price_per_liter
+
+
+def main():
+    prices = {
+        "1": ("Petrol", 1.20),
+        "2": ("Diesel", 1.05),
+        "3": ("Gas", 0.95),
+    }
+
+    while True:
+        print_menu()
+        choice = get_fuel_choice()
+
+        if choice == "4":
+            print("Thank you for visiting. Goodbye!")
+            break
+
+        if choice not in prices:
+            print("Invalid choice. Please choose 1, 2, 3, or 4.")
+            continue
+
+        fuel_name, price = prices[choice]
+        liters = get_quantity()
+        total = calculate_cost(liters, price)
+
+        print(f"\nYou selected {fuel_name}.")
+        print(f"Liters: {liters:.2f}")
+        print(f"Price per liter: ${price:.2f}")
+        print(f"Total cost: ${total:.2f}\n")
+
+        again = input("Would you like another transaction? (yes/no): ").strip().lower()
+        if again not in ("yes", "y"):
+            print("Thank you for using the Shell fuel station machine.")
+            break
+
+
+if __name__ == "__main__":
+    main()
