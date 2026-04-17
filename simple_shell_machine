@@ -1,16 +1,15 @@
 def print_menu():
-    print("=====  FUEL STATION  =====")
-    print("1. Petrol (Gasoline) - 3500 per liter")
+    print(" MCHEMBE FUEL STATION")
+    print("1. Petrol - 3500 per liter")
     print("2. Diesel - 3400 per liter")
-    print("3. Gas - 5000 per liter")
-    print("4. Exit")
-    print("====================================")
+    print("3. Exit")
+    
 
 
 import time
 
 def get_fuel_choice():
-    choice = input("Choose fuel type (1-4): ").strip()
+    choice = input("Choose fuel type (1-3): ").strip()
     return choice
 
 
@@ -39,7 +38,7 @@ def show_money_count(amount):
         return
 
     duration = 30.0
-    steps = 60
+    steps = 10
     delay = duration / steps
 
     for step in range(steps):
@@ -61,12 +60,12 @@ def main():
         print_menu()
         choice = get_fuel_choice()
 
-        if choice == "4":
+        if choice == "3":
             print("Thank you for visiting. Goodbye!")
             break
 
         if choice not in prices:
-            print("Invalid choice. Please choose 1, 2, 3, or 4.")
+            print("Invalid choice. Please choose 1, 2, or 3.")
             continue
 
         fuel_name, price = prices[choice]
