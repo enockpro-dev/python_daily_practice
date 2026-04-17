@@ -7,33 +7,54 @@ def print_menu():
     print("====================================")
 
 
+import time
+
 def get_fuel_choice():
     choice = input("Choose fuel type (1-4): ").strip()
     return choice
 
 
-def get_quantity():
+def get_money():
     while True:
-        value = input("Enter liters to buy: ").strip()
+        value = input("Enter amount of money: ").strip()
         try:
-            liters = float(value)
-            if liters <= 0:
-                print("Please enter a positive number.")
+            amount = float(value)
+            if amount <= 0:
+                print("Please enter a positive amount.")
                 continue
-            return liters
+            return amount
         except ValueError:
             print("Invalid input. Please enter a number.")
 
 
-def calculate_cost(liters, price_per_liter):
-    return liters * price_per_liter
+def calculate_liters(amount, price_per_liter):
+    return amount / price_per_liter
+
+
+def show_money_count(amount):
+    print("\nCounting money from 0 to the entered amount:")
+    target = amount
+    if target <= 0:
+        print("0.00\n")
+        return
+
+    duration = 30.0
+    steps = 60
+    delay = duration / steps
+
+    for step in range(steps):
+        current = target * step / steps
+        print(f"\r{current:.2f}", end="", flush=True)
+        time.sleep(delay)
+
+    print(f"\r{target:.2f}\n", flush=True)
 
 
 def main():
     prices = {
-        "1": ("Petrol", 1.20),
-        "2": ("Diesel", 1.05),
-        "3": ("Gas", 0.95),
+        "1": ("Petrol", 3500),
+        "2": ("Diesel", 3400),
+        "3": ("Gas", 5000),
     }
 
     while True:
@@ -49,13 +70,14 @@ def main():
             continue
 
         fuel_name, price = prices[choice]
-        liters = get_quantity()
-        total = calculate_cost(liters, price)
+        amount = get_money()
+        show_money_count(amount)
+        liters = calculate_liters(amount, price)
 
-        print(f"\nYou selected {fuel_name}.")
-        print(f"Liters: {liters:.2f}")
-        print(f"Price per liter: ${price:.2f}")
-        print(f"Total cost: ${total:.2f}\n")
+        print(f"You selected {fuel_name}.")
+        print(f"Amount paid: {amount:.2f}")
+        print(f"Price per liter: {price:.2f}")
+        print(f"Liters delivered: {liters:.3f} L\n")
 
         again = input("Would you like another transaction? (yes/no): ").strip().lower()
         if again not in ("yes", "y"):
