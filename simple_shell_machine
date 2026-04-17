@@ -37,11 +37,11 @@ def show_money_count(amount):
         print("0.00\n")
         return
 
-    duration = 10.0
-    steps = 1
+    duration = 30.0
+    steps = 300
     delay = duration / steps
 
-    for step in range(steps):
+    for step in range(steps + 1):
         current = target * step / steps
         print(f"\r{current:.2f}", end="", flush=True)
         time.sleep(delay)
