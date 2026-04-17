@@ -37,7 +37,7 @@ def show_money_count(amount):
         print("0.00\n")
         return
 
-    duration = 10.0
+    duration = 40.0
     steps = 100
     delay = duration / steps
 
