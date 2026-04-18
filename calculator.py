@@ -11,7 +11,7 @@ elif operation == "-":
     print("result:", num1 - num2)
 
 elif operation == "*":
-    print("result:", num1 * num2)0
+    print("result:", num1 * num2)
 
 elif operation == "/":
     print("result:", num1 / num2)
