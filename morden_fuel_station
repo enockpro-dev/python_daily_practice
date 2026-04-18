@@ -1,0 +1,117 @@
+def print_menu():
+    print(" MCHEMBE!! MORDEN FILLING STATION")
+    print("1. Petrol - 3500 per liter")
+    print("2. Diesel - 3400 per liter")
+    print("3. Exit")
+    
+
+
+import msvcrt
+import time
+
+def get_fuel_choice():
+    choice = input("Choose fuel type (1-3): ").strip()
+    return choice
+
+
+def read_pin(prompt):
+    print(prompt, end="", flush=True)
+    pin = ""
+    while True:
+        ch = msvcrt.getwch()
+        if ch in "\r\n":
+            break
+        if ch == "\x08":
+            if len(pin) > 0:
+                pin = pin[:-1]
+                print("\b \b", end="", flush=True)
+            continue
+        if ch.isdigit():
+            pin += ch
+            print("*", end="", flush=True)
+    print()
+    return pin
+
+
+def get_card_info():
+    card_number = input("ENTER YOUR FUEL CARD NUMBER: ").strip()
+    pin = read_pin("Enter PIN: ")
+    while not (pin.isdigit() and len(pin) >= 4):
+        print("Invalid PIN. Please enter at least 4 digits.")
+        pin = read_pin("Enter PIN: ")
+    print("Card accepted.")
+    return card_number, pin
+
+
+def get_money():
+    while True:
+        value = input("Enter amount of money: ").strip()
+        try:
+            amount = float(value)
+            if amount <= 0:
+                print("Please enter a positive amount.")
+                continue
+            return amount
+        except ValueError:
+            print("Invalid input. Please enter a number.")
+
+
+def calculate_liters(amount, price_per_liter):
+    return amount / price_per_liter
+
+
+def show_money_count(amount):
+    print("\nSERVICE IN PROGRESS DONT WORRY WE ARE COUNTING YOUR MONEY:")
+    target = amount
+    if target <= 0:
+        print("0.00\n")
+        return
+
+    duration = 30.0
+    steps = 300
+    delay = duration / steps
+
+    for step in range(steps + 1):
+        current = target * step / steps
+        print(f"\r{current:.2f}", end="", flush=True)
+        time.sleep(delay)
+
+    print(f"\r{target:.2f}\n", flush=True)
+
+
+def main():
+    prices = {
+        "1": ("Petrol", 3500),
+        "2": ("Diesel", 3500),
+       
+    }
+
+    while True:
+        print_menu()
+        choice = get_fuel_choice()
+
+        if choice == "3":
+            print("Thank you for visiting. Goodbye!")
+            break
+
+        if choice not in prices:
+            print("Invalid choice. Please choose 1, 2, or 3.")
+            continue
+
+        fuel_name, price = prices[choice]
+        card_number, pin = get_card_info()
+        amount = get_money()
+        show_money_count(amount)
+        liters = calculate_liters(amount, price)
+
+        print(f"You selected {fuel_name}.")
+        print(f"Amount paid: {amount:.2f}")
+        print(f"Price per liter: {price:.2f}")
+        print(f"Liters delivered: {liters:.3f} L\n")
+
+        print("THANK YOU FOR VISITING MCHEMBE!! MORDEN FILLING STATION// COME AGAIN!!\n")
+        break
+
+
+if __name__ == "__main__":
+    main()
