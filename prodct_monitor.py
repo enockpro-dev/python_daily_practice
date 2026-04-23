@@ -1,4 +1,4 @@
-num_products = int(input("Enter number of products: "))
+num_products = int(input("Enter number of product: "))
 products = []
 for i in range(num_products):
     name = input("Enter product name: ")
@@ -33,7 +33,7 @@ for p in products:
 
     # Expiry check
     if p["expiry_days"] <= 3:
-        print("⚠️ Expiring soon!")
+        print("⚠️ This going to Expiring soon!")
 
     # Most / Least sold
     if most_sold is None or p["sold"] > most_sold["sold"]:
