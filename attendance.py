@@ -8,9 +8,9 @@ attendance_dates = []  # ordered list of dates tracked
 
 # Function to add students
 def add_students():
-    num_students = int(input("Enter number of students: "))
+    num_students = int(input("Number of students: "))
     for i in range(num_students):
-        name = input(f"Enter name of student {i+1}: ")
+        name = input(f"Name of the student {i+1}: ")
         students.append(name)
         attendance_records[name] = {}
 
