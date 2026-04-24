@@ -24,7 +24,7 @@ while True:
         if withdraw > balance:
             print("Insufficient balance")
         else:
-            receipt_choice = input("Do you want a receipt? (y/n): ")
+            receipt_choice = input("Do you want a receipt? (Y/N): ")
             balance = balance - withdraw
             print("Please take your money")
             if receipt_choice.lower() == 'y':
