@@ -3,13 +3,13 @@ print("==== Welcome to  ATM ====")
 balance = 1000
 
 while True:
-    print("\nChoose an option:")
+    print("\nChoose service:")
     print("1. Check Balance")
     print("2. Deposit Money")
     print("3. Withdraw Money")
     print("4. Exit")
 
-    choice = input("Enter choice: ")
+    choice = input("Enter choice number: ")
 
     if choice == "1":
         print("Your balance is:", balance)
