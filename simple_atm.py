@@ -9,7 +9,7 @@ while True:
     print("3. Withdraw Money")
     print("4. Exit")
 
-    choice = input("Enter choice number: ")
+    choice = input("Enter choice: ")
 
     if choice == "1":
         print("Your balance is:", balance)
