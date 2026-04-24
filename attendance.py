@@ -23,7 +23,7 @@ def mark_attendance():
 
     print(f"\nMarking attendance for {date}")
     for student in students:
-        status = input(f"Is {student} present? (y/n): ").strip().lower()
+        status = input(f"Is {student} present? (Y/N): ").strip().lower()
         attendance_records[student][date] = (status == 'y')
 
     # Automatically view attendance for the day after marking
