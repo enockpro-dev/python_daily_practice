@@ -53,7 +53,7 @@ def view_attendance_for_date(date):
         print(f"No attendance recorded for {date}.")
         return
 
-    print(f"Attendance for {date}:")
+    print(f"ATTENDEANCE FOR {date}:")
     for student in students:
         present = attendance_records[student].get(date, False)
         status = "✓" if present else "✗"
